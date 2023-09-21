@@ -15,6 +15,7 @@ int sum(int pos){
 }
 
 //PRA ATUALIZAR VAI SOMANDO O BIT MENOS SIGNIFICATIVO
+
 void update(int pos, int novo){
     while(pos <= n){
         bit[pos] += novo;
