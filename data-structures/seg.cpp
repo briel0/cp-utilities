@@ -1,12 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//CONSULTA DE MENOR ELEMENTO EM UM INTERVALO
+//defina a operação previamente
+//RMQ nesse caso
+int op(int a, int b){
+    return min(a, b);
+}
 
 vector<int> original, seg;
-int a, b;
+int a, b, n, _new, idx; 
+// a -> left, b-> right, _new-> novo valor, idx-> posicao
 
-void build(int node, int l, int r){
+void build(int node = 1, int l = 1, int r = n){
     if(l == r){
         seg[node] = original[l];
     }
@@ -14,22 +19,37 @@ void build(int node, int l, int r){
         int mid = (l + r) / 2;
         build(2*node, l, mid);
         build(2*node + 1, mid + 1, r);
-        seg[node] = min(seg[2*node], seg[2*node + 1]);
+        seg[node] = op(seg[2*node], seg[2*node + 1]);
     }
 }
 
-int query(int node, int l, int r){
+void update(int node = 1, int l = 1, int r = n){
+    if(l == r){
+        seg[node] = _new;
+        return;
+    }
+    int mid = (l + r) / 2;
+    if(idx <= mid){
+        update(2*node, l, mid);
+    }
+    else{
+        update(2*node + 1, mid + 1, r);
+    }
+    seg[node] = op(seg[2*node], seg[2*node + 1]);
+}
+
+int query(int node = 1, int l = 1, int r = n){
     if(l > b || r < a) return INT_MAX;
     if(l >= a && r <= b) return seg[node];
     int mid = (l + r) / 2;
-    return min(query(2*node, l, mid), query(2*node + 1, mid + 1, r));
+    return op(query(2*node, l, mid), query(2*node + 1, mid + 1, r));
 }
 
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     
-    int n, q;
+    int q;
     cin >> n >> q;
     
     original.resize(n + 1);
@@ -39,12 +59,20 @@ int main(){
         cin >> original[i];
     }
     
-    build(1, 1, n);
+    build();
     
     while(q--){
-        cin >> a >> b;
-        cout << query(1, 1, n) << '\n';
-    } 
+        char o;
+        cin >> o;
+        if(o == 'U'){ //update
+            cin >> idx >> value;
+            update();
+        } 
+        else{ //query
+            cin >> a >> b;
+            cout << query() << '\n';
+        }
+    }
     
 }
 /*
