@@ -34,6 +34,15 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    int m;
+    cin >> m;
+    while(m--){
+        int a, b, p;
+        cin >> a >> b >> p;
+        j[a].push_back({b, p});
+        j[b].push_back({a, p}); //CHECAR SE É DIRECIONADO
+    }
+    
     djkt();
     
 }
