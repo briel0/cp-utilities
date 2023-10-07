@@ -6,7 +6,7 @@ vector<pair<int, int>> j[10005];
 
 void djkt(int a){
     for(int i = 1; i <= n; i++){
-        d[i] = INT_MAX;
+        d[i] = INT_MAX; //CUIDADO SE FOR UM PROBLEMA DE LL
     }
     using pii = pair<int, int>;
     priority_queue<pii, vector<pii>, greater<pii>> p;
@@ -33,6 +33,7 @@ void djkt(int a){
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
+
+    djkt();
     
 }
