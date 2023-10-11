@@ -30,7 +30,7 @@ int reach(int init = 1, int dest = n){
   return 0;
 }
  
-//atualiza o total enquanto há caminho
+//atualiza o total enquanto há caminho entre init e dest
 int cost(int init = 1, int dest = n){
   int total = 0;
   int atual;
