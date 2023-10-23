@@ -1,14 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int p[] //parenting
-int s[] // size of sets
+vector<int> p, s;
+//parenting and size of sets
 
 int find_set(int v){
-    if(p[v] == v){
-        return v;
-    }
-    return p[v] = find_set(p[v]); 
+    return (p[v] == v ? v : p[v] = find_set(p[v]));
     //reconstruindo a árvore de forma a "subir mais rápido"
 }
 
