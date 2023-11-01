@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//1-INDEXED
+
 int n;
 vector<int> bit;
 
