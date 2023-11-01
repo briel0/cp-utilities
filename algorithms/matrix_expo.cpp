@@ -5,14 +5,14 @@ using namespace std;
 
 const int MOD = 1e9 + 7;
 
-int n, e;
+int n, e, r1, c1, r2, c2;
 matrix res, init;
 
 matrix mult(matrix a, matrix b){
-    matrix ans(n, vector<int>(n, 0));
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < n; j++){
-            for(int k = 0; k < n; k++){
+    matrix ans(r1, vector<int>(c2, 0));
+    for(int i = 0; i < r1; i++){
+        for(int j = 0; j < c2; j++){
+            for(int k = 0; k < c1; k++){
                 ans[i][j] += a[i][k] * b[k][j];
                 ans[i][j] %= MOD;
             }
