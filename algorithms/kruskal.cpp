@@ -34,12 +34,11 @@ int main(){
     int n, m;
     cin >> n >> m;
     p.resize(n + 1), s.resize(n + 1); //1-indexed
-    multimap<int, pair<int, int>> e;
-    while(m--){
-        int a, b, p;
-        cin >> a >> b >> p;
-        e.insert({p, {a, b}});
+    vector<array<int, 3>> e(m);
+    for(auto &[peso, a, b] : e){
+        cin >> a >> b >> peso;
     }
+    sort(e.begin(), e.end());
     for(int i = 1; i <= n; i++){ 
         p[i] = i;
         //parente inicial (ele mesmo)
@@ -47,17 +46,15 @@ int main(){
         //tamanho inicial (1)
     }
     int cost = 0;
-    for(auto &y : e){
-        int a = y.S.F, b = y.S.S;
+    for(auto &[peso, a, b] : e){
         if(find_set(a) != find_set(b)){
-            //cout << "uniu-> " << y.S.F << ' ' << y.S.S << ' ';
-            union_set(y.S.F, y.S.S);
-            //cout << "sets-> " << fs(y.S.F) << ' ' << fs(y.S.S) << '\n';
-            cost += y.F;
+            //cout << "uniu-> " << a << ' ' << b << ' ';
+            union_set(a, b);
+            //cout << "sets-> " << fs(a) << ' ' << fs(b) << '\n';
+            cost += peso;
         }
     }
     cout << cost << '\n';
-    
 }
 /*
 */
