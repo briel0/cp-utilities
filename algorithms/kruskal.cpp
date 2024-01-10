@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define F first
-#define S second
 
 vector<int> p; //parenting
 vector<int> s; // size of sets
