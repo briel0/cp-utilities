@@ -39,7 +39,7 @@ void update(int node = 1, int l = 1, int r = n){
 }
 
 int query(int node = 1, int l = 1, int r = n){
-    if(l > b || r < a) return INT_MAX;
+    if(l > b || r < a) return INT_MAX; //ELEMENTO NEUTRO
     if(l >= a && r <= b) return seg[node];
     int mid = (l + r) / 2;
     return op(query(2*node, l, mid), query(2*node + 1, mid + 1, r));
