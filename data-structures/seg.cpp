@@ -65,7 +65,7 @@ int main(){
         char o;
         cin >> o;
         if(o == 'U'){ //update
-            cin >> idx >> value;
+            cin >> idx >> _new;
             update();
         } 
         else{ //query
