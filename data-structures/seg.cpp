@@ -3,7 +3,7 @@ using namespace std;
 
 //defina a operação previamente
 //RMQ nesse caso
-int op(int a, int b){
+int combina(int a, int b){
     return min(a, b);
 }
 
@@ -19,7 +19,7 @@ void build(int node = 1, int l = 1, int r = n){
         int mid = (l + r) / 2;
         build(2*node, l, mid);
         build(2*node + 1, mid + 1, r);
-        seg[node] = op(seg[2*node], seg[2*node + 1]);
+        seg[node] = combina(seg[2*node], seg[2*node + 1]);
     }
 }
 
@@ -35,14 +35,18 @@ void update(int node = 1, int l = 1, int r = n){
     else{
         update(2*node + 1, mid + 1, r);
     }
-    seg[node] = op(seg[2*node], seg[2*node + 1]);
+    seg[node] = combina(seg[2*node], seg[2*node + 1]);
 }
 
 int query(int node = 1, int l = 1, int r = n){
-    if(l > b || r < a) return INT_MAX; //ELEMENTO NEUTRO
-    if(l >= a && r <= b) return seg[node];
+    if(l > b || r < a){
+         return INT_MAX;
+    }
+    if(l >= a && r <= b){
+         return seg[node];
+    }
     int mid = (l + r) / 2;
-    return op(query(2*node, l, mid), query(2*node + 1, mid + 1, r));
+    return combina(query(2*node, l, mid), query(2*node + 1, mid + 1, r));
 }
 
 int main(){
