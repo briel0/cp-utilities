@@ -18,11 +18,12 @@ signed main(){
         b[i / len] += a[i];
     }
     while(q--){
-        int op;
+        char op;
         cin >> op;
-        if(op){
-            int l, r, x, ans = 0;
-            cin >> l >> r >> x;
+        if(op == '?'){
+            int l, r, ans = 0;
+            cin >> l >> r;
+            l--, r--;
             int cl = l / len, cr = r / len;
             if(cl == cr){
                 for(int i = l; i <= r; i++){
@@ -45,6 +46,7 @@ signed main(){
         else{
             int i, v;
             cin >> i >> v;
+            i--;
             b[i / len] -= a[i];
             a[i] = v;
             b[i / len] += a[i];
