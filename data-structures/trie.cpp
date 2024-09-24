@@ -29,28 +29,6 @@ void coloca(node* root, string &key){
     current->count++;
 }
 
-int prefixtem(node* root, string &key){
-    node* current = root;
-    for(auto &c : key){
-        if(current->children[c - 'a'] == NULL){
-            return 0;
-        }
-        current = current->children[c - 'a'];
-    }
-    return current->prefixcount;
-}
-
-bool wordtem(node* root, string &key){
-    node* current = root;
-    for(auto &c : key){
-        if(current->children[c - 'a'] == NULL){
-            return false;
-        }
-        current = current->children[c - 'a'];
-    }
-    return current->count > 0;
-}
-
 bool deleta(node* root, string &key){
     node* current = root;
     node* lastword = NULL;
@@ -104,6 +82,5 @@ signed main(){
     while(q--){
         string s;
         cin >> s;
-        cout << prefixtem(init, s) << '\n';
     }
 }
