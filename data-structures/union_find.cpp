@@ -4,7 +4,8 @@ using namespace std;
 struct disjointset{
     vector<int> p, s; 
     
-    disjointset(int n) : p(n + 1), s(n + 1){
+    disjointset(int n) : p(n + 1){
+        s.assign(n + 1, 1);
         iota(p.begin(), p.end(), 0);
     }
     
