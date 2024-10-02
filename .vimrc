@@ -1,14 +1,14 @@
 filetype indent on
 set relativenumber
-set matchpairs=(:),{:},[:],':',":"
-set autoindent expandtab tabstop=4 shiftwidth=4
+set smartindent
 set smarttab
 set incsearch
 set expandtab
-set backspace=indent,eol,start
 syntax on
+set autoindent expandtab tabstop=4 shiftwidth=4
 autocmd BufNewFile *.cpp -r ~/template.cpp
-autocmd filetype cpp nnoremap <F5> :w <bar> !g++ -std=c++20 % <CR>
-autocmd filetype cpp nnoremap <F9> : <bar> !a.exe < input.txt <CR>
-set smartindent
 
+" COMANDOS->
+" w|!g++ -g -std=c++2a %
+" !./a.out < input.txt
+" !gdb a.out
