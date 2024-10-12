@@ -58,6 +58,10 @@ public:
         return modint((value * other.value) % MOD);
     }
 
+    modint operator ^ (int expo) const {  // Definindo potenciação
+        return modint(binexp(value, expo, MOD));
+    }
+
     modint& operator *= (const modint& other) {
         value = (value * other.value) % MOD;
         return *this;
