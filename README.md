@@ -1,2 +1,2 @@
 # cp-utilities
-el fino da coda
+utilities for competitive programming
